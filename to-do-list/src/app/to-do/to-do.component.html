@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="wrapper">
+
+      <h1>To Do List</h1>
+
+      <div class="task-input">
+        <i class="fa fa-bars"></i>
+        <input [(ngModel)]="todoObject.todoText" id="txtName" (ngModelChange)="filter($event)" type="text" placeholder="Add new task">
+
+      </div>
+
+      <div class="controls">
+        <button class="clear-btn "  (click)="add()">Add</button>
+        <button class="delete-btn" *ngIf="isCheck()" (click)="del()"> Delete</button>
+      </div>
+
+        <br>
+
+      <ul class="task-box">
+        <ng-container *ngIf="todoItems.length === 0">
+          <li class="task" >
+            <label for="0">
+              <p >No ToDo Items Found</p>
+            </label>
+          </li>
+        </ng-container>
+
+
+        <ng-container *ngIf="todoFilter.length !==0">
+          <li class="task" *ngFor="let i of todoFilter">
+            <label for="0">
+              <p class=""><input type="checkbox" id="0" [(ngModel)]="i.isChecked">{{i.todoText}} </p>
+            </label>
+          </li>
+        </ng-container>
+
+
+
+      </ul>
+
+    </div>
+
+  </div>
+</div>
